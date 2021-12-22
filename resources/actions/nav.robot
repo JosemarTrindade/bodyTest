@@ -6,6 +6,10 @@ Go To Students
     Click       css=a[href$=alunos]
     Wait For Elements State      css=h1 >> text=Gestão de Alunos     visible     5
 
+Go To Plans
+    Click       css=a[href$=planos]
+    Wait For Elements State      css=h1 >> text=Gestão de Planos     visible     5
+
 User Should Be Login    
     [Arguments]     ${user_name}
     Get Text        css=aside strong        Should Be       ${user_name}
