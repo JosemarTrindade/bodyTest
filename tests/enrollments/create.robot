@@ -9,10 +9,10 @@ Test Teardown       Take Screenshot
 ***Test Cases***
 Cenario: Deve exibir data inicial e final conforme o plano escolhido
 
-    ${fixture}                  Get Json        enroll-dates
+    ${fixture}          Get Json            enroll-dates
 
-    ${john}         Set Variable        ${fixture.student}
-    ${black}        Set Variable        ${fixture.plan}   
+    ${john}             Set Variable        ${fixture.student}
+    ${black}            Set Variable        ${fixture.plan}   
 
     Insert Student              ${john}
     Insert Plan                 ${black}          
@@ -23,4 +23,23 @@ Cenario: Deve exibir data inicial e final conforme o plano escolhido
     Select Plan                 ${black.title} 
     Start Date Should Today
     End Date Should Be          ${fixture.days} 
+
+Cenario: Deve matricular um aluno no plano
+
+    ${fixture}          Get Json            enroll-create
+
+    ${sara}             Set Variable        ${fixture.student}
+    ${fit}              Set Variable        ${fixture.plan}   
+
+    Insert Student              ${sara}
+    Insert Plan                 ${fit}          
+    
+    Go To Enrolls
+    Go To Form Enroll
+    Select Student              ${sara.name}
+    Select Plan                 ${fit.title} 
+    Submit Enrolls Form
+    Toaster Text Should Be      Matrícula cadastrada com sucesso
+
+    [Teardown]      Thinking And Take Screenshot    2
 

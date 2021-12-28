@@ -15,6 +15,9 @@ Select Plan
     Fill Text       css=input[aria-label='plan_id']      ${title}
     Click           css=div[id*=option] >> text=${title}
 
+Submit Enrolls Form
+    Click           css=button[form=formEnrollment]
+
 ## Links & Buttons
 Go To Form Enroll
     Click       css=a[href$="matriculas/new"]
